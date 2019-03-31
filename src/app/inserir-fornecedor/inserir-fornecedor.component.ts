@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-inserir-fornecedor',
@@ -18,9 +19,12 @@ export class InserirFornecedorComponent implements OnInit {
   onSubmit(form){
     console.log(form);
     console.log(this.fornecedor);
+
+    //return this.http.post("url", this.fornecedor);
+
   }
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
   }
