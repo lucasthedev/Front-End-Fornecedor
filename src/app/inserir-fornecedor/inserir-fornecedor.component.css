@@ -1,0 +1,11 @@
+form{
+    margin-top: 15px;
+}
+
+#comentarioFornecedor{
+    resize: none;
+}
+
+.ng-invalid.ng-touched:not(form){
+    border: solid 1px red;
+}

@@ -1,0 +1,31 @@
+<form #formInserir="ngForm" (ngSubmit)="onSubmit(formInserir)">
+  <div class="form-group">
+    <label for="nomeFornecedor">Nome</label>
+    <input type="text" class="form-control" id="nomeFornecedor" placeholder="Nome do Fornecedor" name="nome" [(ngModel)]="fornecedor.nome" required #nome="ngModel">
+    <div *ngIf="!nome.valid && nome.touched" class="alert alert-danger " role="alert">
+      O campo "Nome" é obrigatório.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="emailFornecedor">Email</label>
+    <input type="text" email class="form-control" id="emailFornecedor" placeholder="Ex: fornecedor@fornecedor.com.br" name="email" [(ngModel)]="fornecedor.email" required #email="ngModel">
+    <div *ngIf="!email.valid && email.touched && email.value == ''" class="alert alert-danger" role="alert">
+      O campo "Email" é obrigatório.
+    </div>
+    <div *ngIf="email.value !='' && email.touched && !email.valid" class="alert alert-danger" role="alert">
+        Informe um email válido.
+      </div>
+  </div>
+  <div class="form-group">
+    <label for="comentarioFornecedor">Comentário</label>
+    <textarea class="form-control" rows="3" id="comentarioFornecedor" maxlength="500" name="comentario" [(ngModel)]="fornecedor.comentario"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="cnpjFornecedor">CNPJ</label>
+    <input type="text" class="form-control" id="cnpjFornecedor" placeholder="Ex: 13.126.825/0001-07" name="cnpj" [(ngModel)]="fornecedor.cnpj" required #cnpj="ngModel">
+    <div *ngIf="!cnpj.valid && cnpj.touched" class="alert alert-danger" role="alert">
+      O campo "CNPJ" é obrigatório.
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Salvar</button>
+</form>
