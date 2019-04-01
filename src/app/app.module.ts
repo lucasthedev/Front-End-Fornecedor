@@ -6,11 +6,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InserirFornecedorComponent } from './inserir-fornecedor/inserir-fornecedor.component';
 import { HttpClientModule }    from '@angular/common/http';
+import { ListarFornecedorComponent } from './listar-fornecedor/listar-fornecedor.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    InserirFornecedorComponent
+    InserirFornecedorComponent,
+    ListarFornecedorComponent
   ],
   imports: [
     BrowserModule,

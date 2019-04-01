@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { FornecedorService } from '../fornecedor.service';
 
 @Component({
   selector: 'app-inserir-fornecedor',
@@ -15,16 +15,20 @@ export class InserirFornecedorComponent implements OnInit {
     cnpj: ''
   }
 
-
   onSubmit(form){
     console.log(form);
     console.log(this.fornecedor);
 
-    //return this.http.post("url", this.fornecedor);
+    this.service.inserirFornecedor(this.fornecedor).subscribe(
+      success => {
+        alert("Fornecedor inserido com sucesso.");
+    },
+      error => alert("Erro ao inserir o Fornecedor.")
+    );
 
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(private service: FornecedorService) { }
 
   ngOnInit() {
   }
