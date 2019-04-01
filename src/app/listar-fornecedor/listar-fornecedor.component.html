@@ -17,19 +17,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Lucas</td>
-          <td>Lucas@fornec.com.br</td>
-          <td>comentario para lucas da silva pereira</td>
-          <td>716278362173</td>
-          <td><button type="button" class="btn btn-outline-warning">Editar</button></td>
-          <td><button type="button" class="btn btn-outline-danger">Excluir</button></td>
-        </tr>
-        <tr>
-          <td>Lucas</td>
-          <td>Lucas@fornec.com.br</td>
-          <td>comentario para lucas da silva pereira</td>
-          <td>716278362173</td>
+        <tr *ngFor="let fornecedor of fornecedores">
+          <td>{{fornecedor.nome}}</td>
+          <td>{{fornecedor.email}}</td>
+          <td>{{fornecedor.comentario}}</td>
+          <td>{{fornecedor.cnpj}}</td>
           <td><button type="button" class="btn btn-outline-warning">Editar</button></td>
           <td><button type="button" class="btn btn-outline-danger">Excluir</button></td>
         </tr>
