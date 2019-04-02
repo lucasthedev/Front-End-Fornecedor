@@ -1,4 +1,4 @@
-<form #formInserir="ngForm" (ngSubmit)="onSubmit(formInserir)">
+<form #formInserir="ngForm" class="container">
   <div class="form-group">
     <label for="nomeFornecedor">Nome</label>
     <input type="text" class="form-control" id="nomeFornecedor" placeholder="Nome do Fornecedor" name="nome" [(ngModel)]="fornecedor.nome" required #nome="ngModel">
@@ -27,5 +27,5 @@
       O campo "CNPJ" é obrigatório.
     </div>
   </div>
-  <button type="submit" class="btn btn-primary btn-lg" [disabled]="!formInserir.valid">Salvar</button>
+  <button type="submit" class="btn btn-primary btn-lg" (click)="salvarForm()" [disabled]="!formInserir.valid">Salvar</button>
 </form>

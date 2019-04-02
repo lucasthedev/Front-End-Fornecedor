@@ -7,18 +7,10 @@
   </div>
   <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-      <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true" (click)="setTabInserir()" [class.active]="tabInserir">Inserir</a>
-      <a class="nav-item nav-link " id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false" (click)="abaListar()" [class.active]="tabListar">Listar</a>
+      <button type="button" routerLink="novo" class="btn nav-item nav-link active" id="nav-home-tab" routerLinkActive="active">Inserir</button>
+      <button type="button" routerLink="listar" class="btn nav-item nav-link " id="nav-profile-tab" routerLinkActive="active">Listar</button>
     </div>
   </nav>
-  <div class="tab-content" id="nav-tabContent">
-    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" [class.active]="tabInserir">
-        <app-inserir-fornecedor></app-inserir-fornecedor>
-    </div>
-    <div class="tab-pane fade " id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" [class.show]="tabListar" [class.active]="tabListar">
-      <app-listar-fornecedor></app-listar-fornecedor>
-    </div>
-  </div>
 </div>
 
 <router-outlet></router-outlet>

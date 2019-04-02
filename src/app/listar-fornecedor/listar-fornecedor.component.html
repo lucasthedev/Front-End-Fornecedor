@@ -1,11 +1,12 @@
-<div class="card">
+<div class="card container">
   <div class="card-header">
-    <div class="text-center">
-      <h4>Fornecedores</h4>
+    <div class="row">
+      <h4 class="col-10 text-center">Fornecedores</h4>
+      <!--<button type="button" class="btn btn-secondary col-2" (click)="autalizaListagem()">Atualizar</button>-->
     </div>
   </div>
   <div class="card-body">
-    <table class="table table-hover">
+    <table class="table table-hover" *ngIf="fornecedores?.length > 0; else loading">
       <thead>
         <tr>
           <th>Nome</th>
@@ -18,14 +19,18 @@
       </thead>
       <tbody>
         <tr *ngFor="let fornecedor of fornecedores">
+          <td style="display:none;">{{fornecedor.id}}</td>
           <td>{{fornecedor.nome}}</td>
           <td>{{fornecedor.email}}</td>
           <td>{{fornecedor.comentario}}</td>
           <td>{{fornecedor.cnpj}}</td>
-          <td><button type="button" class="btn btn-outline-warning">Editar</button></td>
+          <td><button type="button" class="btn btn-outline-warning" (click)="editarFornecedor(fornecedor.id)">Editar</button></td>
           <td><button type="button" class="btn btn-outline-danger">Excluir</button></td>
         </tr>
       </tbody>
     </table>
+    <ng-template #loading>
+      <span>Carregando Fornecedores...</span>
+    </ng-template>
   </div>
 </div>

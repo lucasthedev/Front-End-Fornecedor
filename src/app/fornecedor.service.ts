@@ -1,7 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
-import { InserirFornecedorComponent } from './inserir-fornecedor/inserir-fornecedor.component';
 import { Fornecedor } from './fornecedor';
 
 const httpOptions = {
@@ -19,8 +18,6 @@ httpOptions.headers.set("Access-Control-Allow-Origin","*");
 })
 export class FornecedorService {
 
-  
-
   urlInserir: string = 'http://localhost:8080/Fornec/rest/FornecedorController/inserirFornecedor';
 
   inserirFornecedor(fornecedor: any){
@@ -31,6 +28,16 @@ export class FornecedorService {
 
   listarFornecedores(){
     return this.http.get<Fornecedor[]>(this.urlListar,httpOptions);
+  }
+
+  urlEditar: string = 'http://localhost:8080/Fornec/rest/FornecedorController/alterarFornecedor';
+  editarFornecedor(fornecedor: any){
+    return this.http.put(this.urlEditar,fornecedor,httpOptions);
+  }
+
+  urlSelecionarFornec: string = 'http://localhost:8080/Fornec/rest/FornecedorController/obterFornecedor/';
+  selecionarFornecedorById(id){
+    return this.http.get<Fornecedor>(this.urlSelecionarFornec+id, httpOptions);
   }
 
   constructor(private http: HttpClient) { }
