@@ -23,6 +23,8 @@ export class InserirFornecedorComponent implements OnInit {
 
   bsModalRef: BsModalRef;
 
+  constructor(private service: FornecedorService, private modalService: BsModalService, private route: ActivatedRoute) { }
+
   salvarForm(){
 
     if (this.Id != null){
@@ -32,7 +34,8 @@ export class InserirFornecedorComponent implements OnInit {
           var formulario = document.getElementsByTagName("form");
           formulario[0].reset();
           this.Id = null;
-        }
+        },
+        error => this.msgErroAlteracao()
       );
     }else{
       this.service.inserirFornecedor(this.fornecedor).subscribe(
@@ -65,14 +68,16 @@ export class InserirFornecedorComponent implements OnInit {
     this.bsModalRef.content.mensagem = 'Fornecedor alterado com sucesso.';
   }
 
-
-  constructor(private service: FornecedorService, private modalService: BsModalService, private route: ActivatedRoute) { }
+  msgErroAlteracao(){
+    this.bsModalRef = this.modalService.show(AlertModalComponent);
+    this.bsModalRef.content.tipo = 'danger';
+    this.bsModalRef.content.mensagem = 'Ocorreu erro ao alterar o fornececdor';
+  }
 
   ngOnInit() {
     this.route.params.subscribe(
       (params: any) =>{
         const id = params['id'];
-        console.log(id);
         this.Id = id;
         if(id > 0){
           const fornecedor$ = this.service.selecionarFornecedorById(id)

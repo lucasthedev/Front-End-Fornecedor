@@ -40,5 +40,10 @@ export class FornecedorService {
     return this.http.get<Fornecedor>(this.urlSelecionarFornec+id, httpOptions);
   }
 
+  urlExcluirFornec: string = 'http://localhost:8080/Fornec/rest/FornecedorController/excluirFornecedor/';
+  excluirFornecedor(id){
+    return this.http.delete(this.urlExcluirFornec+id, httpOptions);
+  }
+
   constructor(private http: HttpClient) { }
 }

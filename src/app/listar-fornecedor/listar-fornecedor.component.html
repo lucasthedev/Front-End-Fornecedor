@@ -2,7 +2,6 @@
   <div class="card-header">
     <div class="row">
       <h4 class="col-10 text-center">Fornecedores</h4>
-      <!--<button type="button" class="btn btn-secondary col-2" (click)="autalizaListagem()">Atualizar</button>-->
     </div>
   </div>
   <div class="card-body">
@@ -25,7 +24,7 @@
           <td>{{fornecedor.comentario}}</td>
           <td>{{fornecedor.cnpj}}</td>
           <td><button type="button" class="btn btn-outline-warning" (click)="editarFornecedor(fornecedor.id)">Editar</button></td>
-          <td><button type="button" class="btn btn-outline-danger">Excluir</button></td>
+          <td><button type="button" class="btn btn-outline-danger" (click)="excluirFornecedor(fornecedor.id)">Excluir</button></td>
         </tr>
       </tbody>
     </table>
@@ -34,3 +33,11 @@
     </ng-template>
   </div>
 </div>
+
+<ng-template #deleteModal>
+  <div class="modal-body text-center">
+    <p>Deseja excluir o fornecedor selecionado ?</p>
+    <button type="button" class="btn btn-default" (click)="confirmarExclusao()">Sim</button>
+    <button type="button" class="btn btn-primary" (click)="cancelarExclusao()">Não</button>
+  </div>
+</ng-template>
